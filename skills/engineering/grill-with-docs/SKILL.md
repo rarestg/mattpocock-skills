@@ -67,7 +67,7 @@ Area-specific docs:
 │       └── docs/adr/
 ```
 
-If no `docs/adr/` exists, create it only when the first ADR is needed.
+If no decision-doc convention exists, create `docs/adr/` only when the first ADR is needed.
 
 ## During the session
 
@@ -89,7 +89,7 @@ When the user states how something works, check whether the code agrees. If you 
 
 ### Update project docs inline
 
-When a term is resolved, update the relevant project language doc right there. Don't batch these up - capture them as they happen. Preserve the repo's existing doc convention; use [PROJECT-LANGUAGE-DOCS.md](./PROJECT-LANGUAGE-DOCS.md) only when a dedicated glossary is appropriate.
+When a term is resolved, update the relevant project language doc right there. Don't batch these up - capture them as they happen. Preserve the repo's existing doc convention; use [PROJECT-LANGUAGE-DOCS.md](./PROJECT-LANGUAGE-DOCS.md) to choose the target and format. Use its dedicated glossary structure only when a dedicated glossary is appropriate.
 
 Don't couple project language docs to implementation details. Only include terms that are meaningful to domain experts.
 
