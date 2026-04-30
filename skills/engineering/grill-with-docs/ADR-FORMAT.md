@@ -1,8 +1,8 @@
 # ADR Format
 
-ADRs live in `docs/adr/` and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc.
+Prefer the repo's existing decision-doc convention. ADRs commonly live in `docs/adr/` and use sequential numbering such as `0001-slug.md`, `0002-slug.md`, etc., but some repos use area-specific ADR directories, decision records, or decision sections in architecture docs.
 
-Create the `docs/adr/` directory lazily — only when the first ADR is needed.
+If no convention exists and the user wants a decision captured, create `docs/adr/` lazily — only when the first ADR is needed.
 
 ## Template
 
@@ -24,7 +24,7 @@ Only include these when they add genuine value. Most ADRs won't need them.
 
 ## Numbering
 
-Scan `docs/adr/` for the highest existing number and increment by one.
+When the target convention uses numbered files, scan the target decision-doc directory for the highest existing number and increment by one. If the repo records decisions inside an existing architecture or design doc, preserve that document's structure instead of forcing ADR numbering.
 
 ## When to offer an ADR
 

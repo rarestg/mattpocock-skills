@@ -34,7 +34,7 @@ This skill is _informed_ by the project's documented language and decisions. Pro
 
 Read the project's orientation docs, project language docs, domain glossary when present, and any ADRs in the area you're touching first. Follow [PROJECT-DOCS.md](PROJECT-DOCS.md); if those docs are absent, proceed from the code and treat missing language as a risk, not a blocker.
 
-Then use the Agent tool with `subagent_type=Explore` to walk the codebase. Don't follow rigid heuristics — explore organically and note where you experience friction:
+Then use any available codebase-exploration sub-agent or tool to walk the codebase. If none is available, explore locally. Don't follow rigid heuristics — explore organically and note where you experience friction:
 
 - Where does understanding one concept require bouncing between many small modules?
 - Where are modules **shallow** — interface nearly as complex as the implementation?
@@ -63,7 +63,7 @@ Do NOT propose interfaces yet. Ask the user: "Which of these would you like to e
 
 Once the user picks a candidate, drop into a grilling conversation. Walk the design tree with them — constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
 
-Side effects happen inline as decisions crystallize:
+Side effects happen inline as decisions crystallise:
 
 - **Naming a deepened module after a concept not in the project language docs?** Treat that as a language gap. If the repo has a clear source-of-truth doc for language, update that doc with the user's agreement; otherwise capture the proposed wording as a follow-up instead of creating a new convention.
 - **Sharpening a fuzzy term during the conversation?** Record it in the existing source-of-truth docs when the repo convention is clear; otherwise keep the resolved wording in the recommendation.

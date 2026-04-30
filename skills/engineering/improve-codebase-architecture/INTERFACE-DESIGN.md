@@ -1,6 +1,6 @@
 # Interface Design
 
-When the user wants to explore alternative interfaces for a chosen deepening candidate, use this parallel sub-agent pattern. Based on "Design It Twice" (Ousterhout) — your first idea is unlikely to be the best.
+When the user wants to explore alternative interfaces for a chosen deepening candidate, use this parallel sub-agent design pattern. Independent sub-agents are the point: they make it much more likely that the alternatives are genuinely different. Based on "Design It Twice" (Ousterhout) — your first idea is unlikely to be the best.
 
 Uses the vocabulary in [LANGUAGE.md](LANGUAGE.md) — **module**, **interface**, **seam**, **adapter**, **leverage** — and the project's documented language as described in [PROJECT-DOCS.md](PROJECT-DOCS.md).
 
@@ -18,16 +18,18 @@ Show this to the user, then immediately proceed to Step 2. The user reads and th
 
 ### 2. Spawn sub-agents
 
-Spawn 3+ sub-agents in parallel using the Agent tool. Each must produce a **radically different** interface for the deepened module.
+Spawn 3+ sub-agents in parallel. Each must produce a **radically different** interface for the deepened module. If sub-agents are unavailable, explicitly say so and then produce the alternatives yourself.
 
-Prompt each sub-agent with a separate technical brief (file paths, coupling details, dependency category from [DEEPENING.md](DEEPENING.md), what sits behind the seam). The brief is independent of the user-facing problem-space explanation in Step 1. Give each agent a different design constraint:
+Use blank-slate delegation when the environment supports it, so each sub-agent reasons from an independent brief instead of inheriting the current conversation. In Codex, spawn with `fork_context: false`, `model: "gpt-5.5"`, and `reasoning_effort: "xhigh"` for this substantive design work. In other environments, use the strongest available model and the closest equivalent of a no-prior-context spawn.
 
-- Agent 1: "Minimize the interface — aim for 1–3 entry points max. Maximise leverage per entry point."
+Prompt each sub-agent with a standalone technical brief. Do not assume it has read this conversation. Include the repo purpose, relevant docs, file paths, coupling details, dependency category from [DEEPENING.md](DEEPENING.md), what sits behind the seam, scope, and expected output. Give each sub-agent a different design constraint:
+
+- Agent 1: "Minimise the interface — aim for 1–3 entry points max. Maximise leverage per entry point."
 - Agent 2: "Maximise flexibility — support many use cases and extension."
 - Agent 3: "Optimise for the most common caller — make the default case trivial."
 - Agent 4 (if applicable): "Design around ports & adapters for cross-seam dependencies."
 
-Include both [LANGUAGE.md](LANGUAGE.md) vocabulary and relevant project language/orientation docs in the brief so each sub-agent names things consistently with the architecture language and the project's domain language.
+Include both [LANGUAGE.md](LANGUAGE.md) vocabulary and relevant project language/orientation docs in each brief so every sub-agent names things consistently with the architecture language and the project's domain language.
 
 Each sub-agent outputs:
 
